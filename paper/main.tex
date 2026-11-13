@@ -1,0 +1,250 @@
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,microtype,amsmath,amssymb,amsthm,mathtools,enumitem}
+\usepackage[margin=1.1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url,booktabs}
+\renewcommand{\UrlBreaks}{\do\/\do-}
+\raggedbottom
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\numberwithin{equation}{section}
+
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\dbar}{\bar d}
+\newcommand{\R}{\mathcal{R}}
+
+\hypersetup{pdftitle={The d-bar distance between invariant determinantal measures is bounded by the trace norm},pdfauthor={Yitzchak Shmalo}}
+
+\title[The $\bar d$-distance between determinantal measures]{The $\bar d$-distance between invariant determinantal measures is bounded by the trace norm}
+\author{Yitzchak Shmalo}
+\address{Einstein Institute of Mathematics, The Hebrew University of Jerusalem, Jerusalem, Israel}
+\email{yitzchak.shmalo@gmail.com}
+\date{13 November 2026}
+\subjclass[2020]{60G55, 37A35, 46L10, 60E15}
+\keywords{determinantal probability measure, $\bar d$-distance, monotone coupling, sofic group, trace norm}
+
+\begin{document}
+\begin{abstract}
+Let $\Gamma$ be a finitely generated sofic group. Lyons and Thom bounded Ornstein's $\bar d$-distance between the determinantal measures $P_Q$ and $P_{Q'}$ of two equivariant positive contractions on $\ell^2(\Gamma)$ by a function of the operator norm of $Q-Q'$ and by a power of its trace norm. The bound by the trace norm itself is known when $Q$ and $Q'$ commute, and Lyons and Thom asked whether it holds in general. We show that $\bar d(P_Q,P_{Q'})\le\|Q-Q'\|_1$ for all such $Q$ and $Q'$, and for equivariant positive contractions on the edges of a Cayley diagram, with equality when $Q\le Q'$. The proof joins $Q$ to $Q'$ by short steps. Each step subtracts a small multiple of the negative part of $Q'-Q$ and then adds the same multiple of its positive part. By the invariant monotone coupling of Lyons and Thom, the first changes the $\bar d$-distance by at most the trace of the operator subtracted and the second by at most the trace of the operator added. The same argument proves the corresponding inequality for matrices on a finite set, which Lyons and Thom had observed numerically.
+\end{abstract}
+\maketitle
+
+\section{Introduction}\label{sec:intro}
+
+Let $W$ be a countable set and $Q$ a positive contraction on $\ell^2(W)$, that is, a self-adjoint operator with $0\le Q\le I$. We identify a subset of $W$ with its indicator in $\{0,1\}^W$. The determinantal probability measure $P_Q$ on $2^W$ is the law of a random subset $Y\subseteq W$ with $P_Q[A\subseteq Y]=\det(\langle Q\mathbf 1_v,\mathbf 1_u\rangle)_{u,v\in A}$ for every finite $A\subseteq W$, where $\mathbf 1_w$ is the unit vector at $w$ \cite{Ly03}. When a group $\Gamma$ acts on $W$ with finitely many orbits, an operator on $\ell^2(W)$ is called equivariant if it commutes with the action. If $Q$ is equivariant, $P_Q$ is $\Gamma$-invariant.
+
+For $\Gamma$-invariant probability measures $\mu_1,\mu_2$ on $2^W$, Ornstein's $\bar d$-distance \cite{Or74} is
+\begin{equation}\label{eq:dbar}
+\dbar(\mu_1,\mu_2)=\min\Bigl\{\sum_{w\in W'}P[X_1(w)\neq X_2(w)]\;:\;X_i\sim\mu_i,\ (X_1,X_2)\ \text{$\Gamma$-invariant}\Bigr\},
+\end{equation}
+where $W'$ is a set of representatives of the orbits of $\Gamma$ on $W$ \cite[Section~7]{LT16}. The relatively independent joining of two invariant couplings over their common marginal is invariant, which gives the triangle inequality \cite[Section~7]{LT16}.
+
+We work, as in \cite{LT16}, in two algebras of equivariant operators. The first is the group von Neumann algebra $\R(\Gamma)$ of equivariant operators on $\ell^2(\Gamma)$, where $\Gamma$ acts on itself by left multiplication. For the second, let $S$ be a finite generating set of $\Gamma$ and $W_S=\{(\gamma,\gamma s):\gamma\in\Gamma,\ s\in S\}$ the edge set of the Cayley diagram (the Cayley graph with edges labelled by $S$); $\R(\Gamma,S)$ is the algebra of equivariant operators on $\ell^2(W_S)$, and it is identified with the $S\times S$ matrices over $\R(\Gamma)$ \cite[Lemma~3.4]{LT16}. On both algebras we use the trace
+\[
+\Tr(T)=\sum_{w\in W'}\langle T\mathbf 1_w,\mathbf 1_w\rangle,
+\]
+where $W$ is $\Gamma$ or $W_S$. It does not depend on the choice of $W'$ because $T$ is equivariant. On $\R(\Gamma)$ it is the trace $\tau(T)=\langle T\mathbf 1_o,\mathbf 1_o\rangle$, $o$ the identity, and on $\R(\Gamma,S)$ it is the trace $\tau_S$ of \cite[Section~3]{LT16}. We write $\|T\|$ for the operator norm of $T$. The trace norm is $\|T\|_1=\Tr|T|$, where $|T|=(T^*T)^{1/2}$ and $T^*$ is the adjoint of $T$; Lyons and Thom call it the Schatten $1$-norm. For self-adjoint $T$ we write $T_+$ and $T_-$ for its positive and negative parts: $T=T_+-T_-$, $T_\pm\ge0$ and $T_+T_-=0$, so that $|T|=T_++T_-$.
+
+A coupling $(X_1,X_2)$ of two measures on $2^W$ is monotone if $X_1\subseteq X_2$ almost surely. Lyons and Thom \cite[Theorem~5.1]{LT16} prove that if $\Gamma$ is a finitely generated sofic group (see \cite{Pe08} for the definition) and $Q_1\le Q_2$ are positive contractions in $\R(\Gamma)$ or in $\R(\Gamma,S)$, then $P_{Q_1}$ and $P_{Q_2}$ have a $\Gamma$-invariant monotone coupling. Amenable groups and residually finite groups are sofic \cite{Pe08}. On non-amenable groups invariant monotone couplings of invariant measures need not exist in general \cite{Me13}. With \cite[Lemma~7.2]{LT16} the coupling gives (Lemma~\ref{lem:mono} below)
+\begin{equation}\label{eq:mono}
+\dbar(P_{Q_1},P_{Q_2})=\Tr(Q_2-Q_1)\qquad\text{whenever } Q_1\le Q_2 .
+\end{equation}
+For positive contractions $Q$, $Q'$ in $\R(\Gamma)$, Lyons and Thom deduce
+\begin{gather*}
+\dbar(P_Q,P_{Q'})\le\frac{6\|Q-Q'\|}{1+2\|Q-Q'\|}\quad\text{\cite[Lemma~7.8]{LT16}}\qquad\text{and}\\
+\dbar(P_Q,P_{Q'})\le 6\cdot3^{2/3}\|Q-Q'\|_1^{1/3}\quad\text{\cite[Lemma~7.9]{LT16}},
+\end{gather*}
+and they note that both extend to $\R(\Gamma,S)$. The second bound enters their proof that $P_Q$ is a $\dbar$-limit of finitely dependent processes \cite[Theorem~7.3]{LT16}. When $Q$ and $Q'$ commute, $\dbar(P_Q,P_{Q'})\le\|Q-Q'\|_1$: Lyons and Steif \cite{LS03} prove this for abelian $\Gamma$, and Lyons and Thom note that the proof adapts to commuting $Q$, $Q'$ for every $\Gamma$. Lyons and Thom ask whether the inequality holds without commutation (in the paragraph after the proof of \cite[Lemma~7.8]{LT16}), and the question is repeated in \cite[Section~5.2]{Ly14}. We answer it.
+
+\begin{theorem}\label{thm:main}
+Let $\Gamma$ be a sofic group, $S$ a finite generating set of $\Gamma$, and $Q,Q'$ positive contractions in $\R(\Gamma)$ or in $\R(\Gamma,S)$. Then
+\[
+\dbar(P_Q,P_{Q'})\le\|Q-Q'\|_1 .
+\]
+Equality holds whenever $Q\le Q'$ or $Q'\le Q$.
+\end{theorem}
+
+In $\R(\Gamma)$, with $T=Q-Q'$, one has $\|T\|_1=\Tr|T|\le\|T\|\Tr(I)=\|T\|\le1$, hence $\|T\|_1\le6\|T\|/(1+2\|T\|)$ and $\|T\|_1\le\|T\|_1^{1/3}$. So Theorem~\ref{thm:main} implies both bounds of \cite{LT16} there.
+
+Lyons and Thom obtain their two bounds from \eqref{eq:mono}. In the proof of \cite[Lemma~7.8]{LT16}, with $r=\|Q-Q'\|$ and $t=r/(1+2r)$, the operators $Q_t=(1-2t)Q+tI$ and $Q'_t=(1-2t)Q'+tI$ satisfy $\dbar(P_Q,P_{Q_t})\le2t$ and $\dbar(P_{Q'},P_{Q'_t})\le2t$, and $Q'_t-tI\le Q_t\le Q'_t+tI$ gives $\dbar(P_{Q_t},P_{Q'_t})\le2t$. The resulting bound $6t$ is at least $2\|Q-Q'\|$, however small $\|Q-Q'\|_1$ is. The bound $\|Q-Q'\|_1$ would follow from \eqref{eq:mono} at once if the operator
+\[
+M=Q-(Q'-Q)_-=Q'-(Q'-Q)_+
+\]
+were positive, because $M\le Q$, $M\le Q'$ and $\Tr(Q-M)+\Tr(Q'-M)=\|Q-Q'\|_1$. It need not be: for the two rank-one projections of Remark~\ref{rem:strict}, $M$ has a negative eigenvalue.
+
+We pass from $Q$ to $Q'$ in $n$ steps instead of one. For $0<\delta<1$ let $Q^\delta=(1-\delta)Q+\frac\delta2I$ and $Q'^\delta=(1-\delta)Q'+\frac\delta2I$, and put $D=Q'^\delta-Q^\delta$ and $R_j=Q^\delta+\frac jnD$ for $0\le j\le n$. Each $R_j$ is at least $\frac\delta2I$, so for $n\ge2/\delta$ the operator $L_j=R_j-\frac1nD_-$ is a positive contraction, and $L_j\le R_j$, $L_j\le L_j+\frac1nD_+=R_{j+1}$. By \eqref{eq:mono},
+\[
+\dbar(P_{R_j},P_{R_{j+1}})\le\Tr\bigl(\tfrac1nD_-\bigr)+\Tr\bigl(\tfrac1nD_+\bigr)=\tfrac1n\|D\|_1 ,
+\]
+and the sum over $j$ is $\|D\|_1=(1-\delta)\|Q-Q'\|_1$. By \eqref{eq:mono} again, $\dbar(P_Q,P_{Q^\delta})$ and $\dbar(P_{Q'},P_{Q'^\delta})$ are at most $\frac32\delta$ times the number of orbits of $\Gamma$ on $W$, and $\delta$ tends to $0$.
+
+On a finite set no group is needed. There the monotone couplings come from Strassen's theorem \cite{St65}, applied to the stochastic domination of $P_{Q_1}$ by $P_{Q_2}$ for $Q_1\le Q_2$ (Lyons \cite{Ly03}; Borcea, Br\"and\'en and Liggett \cite{BBL09}; see \cite[Theorem~2.1]{LT16}). Lyons and Thom report numerical evidence that $\dbar(P_Q,P_{Q'})\le\|Q-Q'\|_1$ holds for matrices on a finite set with no invariance \cite[end of Section~7]{LT16}; Corollary~\ref{cor:finite} proves it.
+
+\begin{corollary}\label{cor:finite}
+Let $E$ be a finite set and $Q,Q'$ positive contractions on $\ell^2(E)$. There is a coupling $(X,X')$ of $P_Q$ and $P_{Q'}$ with $\mathbf E|X\triangle X'|\le\|Q-Q'\|_1$. If a finite group acts on $E$ and $Q$, $Q'$ are equivariant, the coupling can be taken invariant.
+\end{corollary}
+
+Boccato, Pieroni and Trevisan \cite{BPT26} bound Wasserstein and total variation distances between determinantal point processes, through the corresponding Slater determinant states, in terms of the eigenvalues of the two kernels and the overlaps of their eigenfunctions; their results correct bounds of Decreusefond and Moroz \cite{DM21}. These bounds are not in terms of the trace norm of the difference of the kernels.
+
+\section{Proof}\label{sec:proof}
+
+\begin{lemma}[{\cite[Theorem~5.1, Lemma~7.2]{LT16}}]\label{lem:mono}
+Let $\Gamma$ and $S$ be as in Theorem~\ref{thm:main}, and let $0\le Q_1\le Q_2\le I$ in $\R(\Gamma)$ or $\R(\Gamma,S)$. Then $\dbar(P_{Q_1},P_{Q_2})=\Tr(Q_2-Q_1)$.
+\end{lemma}
+
+\begin{proof}
+By \cite[Theorem~5.1]{LT16} there is a $\Gamma$-invariant monotone coupling $(X_1,X_2)$ of $P_{Q_1}$ and $P_{Q_2}$. By \cite[Lemma~7.2]{LT16}, since a monotone coupling exists,
+\[
+\dbar(P_{Q_1},P_{Q_2})=\sum_{w\in W'}\bigl|P[w\notin X_1]-P[w\notin X_2]\bigr| .
+\]
+Since $P_Q[w\in Y]=\langle Q\mathbf 1_w,\mathbf 1_w\rangle$ and $\langle(Q_2-Q_1)\mathbf 1_w,\mathbf 1_w\rangle\ge0$, the sum equals $\Tr(Q_2-Q_1)$.
+\end{proof}
+
+\begin{lemma}[cf. the first step of the proof of {\cite[Lemma~7.8]{LT16}}]\label{lem:shrink}
+Let $\Gamma$ and $S$ be as in Theorem~\ref{thm:main}, $Q$ a positive contraction in $\R(\Gamma)$ or $\R(\Gamma,S)$, and $k=|W'|$ the number of orbits ($k=1$ in $\R(\Gamma)$, $k=|S|$ in $\R(\Gamma,S)$). For $0<\delta<1$ let $Q^\delta=(1-\delta)Q+\frac\delta2 I$ (the operator $Q_t$ of \cite{LT16} with $t=\delta/2$). Then $\frac\delta2 I\le Q^\delta\le(1-\frac\delta2)I$ and $\dbar(P_Q,P_{Q^\delta})\le\frac32\delta k$.
+\end{lemma}
+
+\begin{proof}
+The bounds on $Q^\delta$ follow from $0\le Q\le I$. Since $(1-\delta)Q\le Q$ and $(1-\delta)Q\le Q^\delta$, Lemma~\ref{lem:mono} and the triangle inequality give
+\[
+\dbar(P_Q,P_{Q^\delta})\le\Tr(\delta Q)+\Tr\bigl(\tfrac\delta2 I\bigr)\le\delta k+\tfrac\delta2 k. \qedhere
+\]
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Fix $0<\delta<1$ and put $D=Q'^\delta-Q^\delta=(1-\delta)(Q'-Q)$. Write $D=D_+-D_-$; both $D_\pm$ lie in the same von Neumann algebra, and $\|D_\pm\|\le\|D\|\le1$. Fix an integer $n\ge2/\delta$ and set
+\[
+R_j=Q^\delta+\tfrac jn D\quad(0\le j\le n),\qquad L_j=R_j-\tfrac1n D_-\quad(0\le j<n).
+\]
+Each $R_j$ is a convex combination of $Q^\delta$ and $Q'^\delta$, so $R_j$ is a positive contraction and $R_j\ge\frac\delta2 I$ by Lemma~\ref{lem:shrink}. Hence $L_j\ge(\frac\delta2-\frac1n)I\ge0$ and $L_j\le R_j\le I$, so $L_j$ is a positive contraction. Moreover $L_j\le R_j$ and $L_j\le L_j+\frac1nD_+=R_{j+1}$. By Lemma~\ref{lem:mono},
+\[
+\dbar(P_{R_j},P_{R_{j+1}})\le\dbar(P_{R_j},P_{L_j})+\dbar(P_{L_j},P_{R_{j+1}})=\tfrac1n\Tr(D_-)+\tfrac1n\Tr(D_+)=\tfrac1n\|D\|_1 .
+\]
+Summing over $j$ and adding the bounds of Lemma~\ref{lem:shrink} for $Q$ and for $Q'$,
+\[
+\dbar(P_Q,P_{Q'})\le 3\delta k+\|D\|_1=3\delta k+(1-\delta)\|Q-Q'\|_1 .
+\]
+Letting $\delta\to0$ gives the inequality. If $Q\le Q'$, Lemma~\ref{lem:mono} gives $\dbar(P_Q,P_{Q'})=\Tr(Q'-Q)=\|Q-Q'\|_1$, and symmetrically if $Q'\le Q$.
+\end{proof}
+
+\begin{proof}[Proof of Corollary~\ref{cor:finite}]
+Take $\Gamma$ trivial, so that $W'=E$ and $\dbar(P_Q,P_{Q'})=\min\mathbf E|X\triangle X'|$ over all couplings; the couplings of $P_Q$ and $P_{Q'}$ form a compact set of measures on the finite set $2^E\times2^E$ and the expected symmetric difference is linear in the coupling, so a coupling attains the minimum. Soficity enters the proof of Theorem~\ref{thm:main} only through the monotone coupling of Lemma~\ref{lem:mono}. On a finite set, $Q_1\le Q_2$ implies that $P_{Q_2}$ stochastically dominates $P_{Q_1}$, so by Strassen's theorem \cite{St65} there is a coupling with $X_1\subseteq X_2$, and then $\mathbf E|X_2\setminus X_1|=\Tr(Q_2-Q_1)$. The triangle inequality for $\min\mathbf E|X\triangle X'|$ follows, as for \eqref{eq:dbar}, from the relatively independent joining. With these two replacements the proof of Theorem~\ref{thm:main}, with $k=|E|$, gives, for each $\delta$, a coupling with $\mathbf E|X\triangle X'|\le3\delta k+(1-\delta)\|Q-Q'\|_1$. Hence the minimum is at most $\|Q-Q'\|_1$.
+
+Let a finite group $G$ act on $E$ with $Q$, $Q'$ equivariant, and let $\pi$ be a coupling attaining the minimum. Since $P_Q$ and $P_{Q'}$ are $G$-invariant, the image of $\pi$ under each $g\in G$ is again a coupling of $P_Q$ and $P_{Q'}$, and it has the same cost because $|gA\triangle gB|=|A\triangle B|$. The average of these images over $G$ is a $G$-invariant coupling with the same cost.
+\end{proof}
+
+\begin{remark}\label{rem:strict}
+The inequality of Corollary~\ref{cor:finite} can be strict. Let $E=\{1,2\}$, let $Q$ be the projection on $\mathbf 1_1$ and $Q'$ the projection on $(\cos\theta)\mathbf 1_1+(\sin\theta)\mathbf 1_2$, with $0<\theta<\pi/2$. Then $P_Q$ is the point mass at $\{1\}$ and $P_{Q'}$ gives $\{1\}$ and $\{2\}$ the masses $\cos^2\theta$ and $\sin^2\theta$, so $\min\mathbf E|X\triangle X'|=2\sin^2\theta$, while $\|Q-Q'\|_1=2\sin\theta$. The operator $Q-(Q'-Q)_-$ has determinant $-\frac12\sin\theta\,(1-\sin\theta)<0$ in the basis $\mathbf 1_1,\mathbf 1_2$, so it is not positive.
+\end{remark}
+
+\section*{Acknowledgments}
+This work was done by AI agents, Claude and Codex, connected to Math Brain \cite{MathBrainRepo,MathBrainPaper} and working inside the Brain framework \cite{BrainFramework}. The question came from the list of open problems that these agents maintain.
+
+\section*{Funding}
+The research presented in this paper was supported by the European Research
+Council (ERC) under the European Union's Horizon Europe research and
+innovation programme (grant agreement No.~101041711), by the Simons
+Foundation as part of the Collaboration on the Mathematical and Scientific
+Foundations of Deep Learning, by Heights Labs and by Convex Nexus Capital.
+It was also supported by the Israel Science Foundation (grant number
+2258/19) and by the Israel Science Foundation (ISF Grant 4101/25). Computational resources were
+provided in part by Google Cloud through its education credits program
+(credit 530550103).
+
+\section*{Declaration of competing interest}
+The author holds equity in Heights Labs and in Convex Nexus Capital and
+has a management role at Convex Nexus Capital. These entities are included
+in the funding declaration above.
+
+\section*{Declaration of generative AI and AI-assisted technologies}
+The paper comes out of Math Brain, an ongoing project on the use of AI systems for research mathematics. In November 2026 Claude Opus~5.5 (Anthropic), working in Claude Code and connected to Math Brain~\cite{MathBrainRepo}, found the proofs of Theorem~\ref{thm:main} and Corollary~\ref{cor:finite} and wrote the paper. Math Brain runs inside the Brain framework~\cite{BrainFramework}, a shared, persistent memory in which AI agents record claims, proofs, failed attempts and methods and audit each other's work; it is described in \cite{MathBrainPaper}. The author directed the work and is responsible for the content of the paper and for decisions concerning its dissemination.
+
+\section*{Data availability}
+No data were used in this work. The source of the paper is at \url{https://github.com/yspennstate/dbar-determinantal-trace-norm}.
+
+\appendix
+\section{Notation}\label{app:notation}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{p{0.20\textwidth}p{0.48\textwidth}p{0.24\textwidth}}
+\toprule
+Symbol & Meaning & Defined in\\\midrule
+$W$ & the countable set carrying the random subset & Section~\ref{sec:intro}, par.~1\\
+$Q$, $I$ & a positive contraction, $0\le Q\le I$; the identity operator & Section~\ref{sec:intro}, par.~1\\
+$Q'$ & a second positive contraction & Section~\ref{sec:intro}, after \eqref{eq:mono}\\
+$P_Q$, $Y$, $P[\cdot]$ & determinantal probability measure of $Q$; a random subset with law $P_Q$; probability & Section~\ref{sec:intro}, par.~1\\
+$\mathbf 1_w$ & the unit vector at $w\in W$ & Section~\ref{sec:intro}, par.~1\\
+$A$ & a finite subset of $W$ & Section~\ref{sec:intro}, par.~1\\
+$\Gamma$ & a group acting on $W$; finitely generated and sofic from \eqref{eq:mono} on & Section~\ref{sec:intro}, par.~1\\
+$\mu_1$, $\mu_2$, $X_1$, $X_2$ & invariant probability measures on $2^W$; a coupling of them & \eqref{eq:dbar}\\
+$\dbar$ & Ornstein's $\bar d$-distance & \eqref{eq:dbar}\\
+$W'$ & a set of representatives of the orbits of $\Gamma$ on $W$ & \eqref{eq:dbar}\\
+$\R(\Gamma)$ & equivariant operators on $\ell^2(\Gamma)$ & Section~\ref{sec:intro}, par.~3\\
+$S$, $W_S$ & a finite generating set of $\Gamma$; the edges of the Cayley diagram & Section~\ref{sec:intro}, par.~3\\
+$\R(\Gamma,S)$ & equivariant operators on $\ell^2(W_S)$ & Section~\ref{sec:intro}, par.~3\\
+$\Tr$, $\tau$, $\tau_S$, $o$ & the trace summed over $W'$, its forms on $\R(\Gamma)$ and $\R(\Gamma,S)$; the identity of $\Gamma$ & Section~\ref{sec:intro}, par.~3\\
+$T$ & an operator in $\R(\Gamma)$ or $\R(\Gamma,S)$ & Section~\ref{sec:intro}, par.~3\\
+$\|\cdot\|$, $\|\cdot\|_1$ & operator norm; trace norm $\|T\|_1=\Tr|T|$ & Section~\ref{sec:intro}, par.~3\\
+$T^*$, $|T|$, $T_\pm$ & adjoint; $(T^*T)^{1/2}$; positive and negative parts & Section~\ref{sec:intro}, par.~3\\
+$\gamma$ & an element of $\Gamma$ & Section~\ref{sec:intro}, par.~3\\
+$r$, $t$, $Q_t$, $Q'_t$ & $\|Q-Q'\|$, $r/(1+2r)$ and $(1-2t)Q+tI$, $(1-2t)Q'+tI$, from the proof of \cite[Lemma~7.8]{LT16} & Section~\ref{sec:intro}, after Theorem~\ref{thm:main}\\
+$M$ & $Q-(Q'-Q)_-$ & Section~\ref{sec:intro}, after Theorem~\ref{thm:main}\\
+$\delta$, $Q^\delta$ & a number in $(0,1)$; $(1-\delta)Q+\frac\delta2 I$ & Section~\ref{sec:intro}, after Theorem~\ref{thm:main}; Lemma~\ref{lem:shrink}\\
+$k$ & number of orbits, $|W'|$ & Lemma~\ref{lem:shrink}\\
+$D$, $D_\pm$ & $Q'^\delta-Q^\delta$ and its positive and negative parts & Section~\ref{sec:intro}, after Theorem~\ref{thm:main}\\
+$n$, $R_j$, $L_j$ & number of steps; $Q^\delta+\frac jnD$; $R_j-\frac1nD_-$ & Section~\ref{sec:intro}, after Theorem~\ref{thm:main}\\
+$E$, $X$, $X'$, $\mathbf E$, $\triangle$ & a finite set; a coupling of $P_Q$ and $P_{Q'}$; expectation; symmetric difference & Corollary~\ref{cor:finite}\\
+$G$, $g$, $\pi$ & a finite group acting on $E$; an element of it; a coupling attaining the minimum & proof of Corollary~\ref{cor:finite}\\
+$\theta$ & an angle in $(0,\pi/2)$ & Remark~\ref{rem:strict}\\\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{thebibliography}{99}
+
+\bibitem{BPT26}
+C.~Boccato, F.~Pieroni and D.~Trevisan, On distances among Slater determinant states and determinantal point processes, \emph{Ann. Henri Poincar\'e} (2026), doi:10.1007/s00023-026-01658-3; arXiv:2504.08971.
+
+\bibitem{BBL09}
+J.~Borcea, P.~Br\"and\'en and T.~M.~Liggett, Negative dependence and the geometry of polynomials, \emph{J. Amer. Math. Soc.} \textbf{22} (2009), 521--567, doi:10.1090/S0894-0347-08-00618-8.
+
+\bibitem{DM21}
+L.~Decreusefond and G.~Moroz, Optimal transport between determinantal point processes and application to fast simulation, \emph{Mod. Stoch. Theory Appl.} \textbf{8} (2021), 209--237, doi:10.15559/21-VMSTA180.
+
+\bibitem{LS03}
+R.~Lyons and J.~E.~Steif, Stationary determinantal processes: phase multiplicity, Bernoullicity, entropy, and domination, \emph{Duke Math. J.} \textbf{120} (2003), 515--575, doi:10.1215/S0012-7094-03-12032-3.
+
+\bibitem{Ly03}
+R.~Lyons, Determinantal probability measures, \emph{Publ. Math. Inst. Hautes \'Etudes Sci.} \textbf{98} (2003), 167--212, doi:10.1007/s10240-003-0016-0.
+
+\bibitem{Ly14}
+R.~Lyons, Determinantal probability: basic properties and conjectures, in \emph{Proceedings of the International Congress of Mathematicians, Seoul 2014}, Vol.~IV, 137--161; arXiv:1406.2707.
+
+\bibitem{LT16}
+R.~Lyons and A.~Thom, Invariant coupling of determinantal measures on sofic groups, \emph{Ergodic Theory Dynam. Systems} \textbf{36} (2016), 574--607, doi:10.1017/etds.2014.70; arXiv:1402.0969.
+
+\bibitem{Me13}
+P.~Mester, Invariant monotone coupling need not exist, \emph{Ann. Probab.} \textbf{41} (2013), 1180--1190, doi:10.1214/12-AOP767.
+
+\bibitem{Or74}
+D.~S.~Ornstein, \emph{Ergodic Theory, Randomness, and Dynamical Systems}, Yale University Press, New Haven, 1974.
+
+\bibitem{Pe08}
+V.~G.~Pestov, Hyperlinear and sofic groups: a brief guide, \emph{Bull. Symbolic Logic} \textbf{14} (2008), 449--480, doi:10.2178/bsl/1231081461.
+
+\bibitem{St65}
+V.~Strassen, The existence of probability measures with given marginals, \emph{Ann. Math. Statist.} \textbf{36} (1965), 423--439, doi:10.1214/aoms/1177700153.
+
+\bibitem{MathBrainRepo} Y.~Shmalo, \emph{Math Brain: public snapshot, code and tests}, 2026, \url{https://github.com/yspennstate/math-brain-public}.
+
+\bibitem{MathBrainPaper} Y.~Shmalo, \emph{Math Brain: shared, auditable memory for multi-agent mathematical research}, October 2026, \url{https://github.com/yspennstate/math-brain-public/tree/main/papers/math-brain-2026-10-24}.
+
+\bibitem{BrainFramework} Y.~Shmalo, \emph{Brain Framework}, public software repository, 2026, \url{https://github.com/yspennstate/brain-framework-public}.
+
+\end{thebibliography}
+\end{document}
